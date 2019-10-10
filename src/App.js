@@ -9,9 +9,9 @@ function App() {
     <React.Fragment>
         <CssBaseLine/>
         <Container>
-          <Button variant="contained" color="primary">
-            Sign Up
-          </Button>
+        <Button variant="contained" color="primary">
+           Sign Up
+        </Button>
         </Container>
     </React.Fragment>
   );
