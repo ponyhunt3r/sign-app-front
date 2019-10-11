@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import LoginWrapper from './loginWrapper';
 import RegisterWrapper from './registerWrapper'
+import './form.css'
 
 interface TabPanelProps {
   children?: React.ReactNode;

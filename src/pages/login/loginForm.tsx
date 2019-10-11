@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Field, ErrorMessage } from 'formik';
+import Button from '@material-ui/core/Button'
 
 const LoginForm = ( props: any)=> {
 
@@ -10,7 +11,7 @@ const LoginForm = ( props: any)=> {
                 <ErrorMessage name="email" />
                 <Field type="password" name="password" placeholder="hasło" />
                 <ErrorMessage name="password" />
-                <button type="submit">Zaloguj</button> </Form>
+                <Button variant="contained" color="primary" type="submit">Zaloguj</Button> </Form>
   )
 
 }

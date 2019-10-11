@@ -9,6 +9,19 @@ const LoginValidation = yup.object().shape({
   email: yup
     .string()
     .email()
+    .test('email', 'Ten adres email jest juz zajęty', async function(value) {
+        if (value.length > 5) {
+            return new Promise((resolve, _reject) => {
+                Axios.get('http://localhost:3000/users/' + value).then(
+                  response => {
+                      console.log('res ', response)
+                    resolve(response.data === true);
+                  },
+                );
+              });
+        }
+
+    })
     .required(),
   password: yup
     .string()

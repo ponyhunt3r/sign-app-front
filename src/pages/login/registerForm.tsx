@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Field, ErrorMessage } from 'formik';
 import { PureComponent } from 'react';
+import Button from '@material-ui/core/Button'
 
 export default class LoginForm extends PureComponent {
 render() {
@@ -11,7 +12,7 @@ render() {
                 <ErrorMessage name="password" />
                 <Field type="password" name="confirmPassword" placeholder="potwiedź hasło" />
                 <ErrorMessage name="confirmPassword" />
-                <button type="submit">Załóż konto</button> </Form>
+                <Button variant="contained" color="primary" type="submit">Załóż konto</Button> </Form>
   )
  }
 }
