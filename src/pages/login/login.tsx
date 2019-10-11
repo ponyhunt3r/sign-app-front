@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import LoginWrapper from './loginWrapper';
+import RegisterWrapper from './registerWrapper'
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -50,6 +51,7 @@ export default function SimpleTabs() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+      console.log('new numb', newValue)
     setValue(newValue);
   };
 
@@ -69,7 +71,7 @@ export default function SimpleTabs() {
                 <LoginWrapper/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Register
+                <RegisterWrapper />
             </TabPanel>
         </Container>
     </div>

@@ -1,6 +1,7 @@
 import { withFormik } from "formik"
 import * as yup from "yup"
 import LoginForm from "./loginForm"
+import Axios from 'axios';
 
 const LoginWrapper = LoginForm
 
@@ -14,12 +15,20 @@ const LoginValidation = yup.object().shape({
     .required(),
 })
 
+function submitLogin(values) {
+    return Axios.post('http://localhost:3000/login', values)
+    .then((res) => {
+      if (res.status === 201) {
+        window.alert('u are logged in')
+      }
+    });
+}
+
 export default withFormik({
     handleSubmit: (values, { setSubmitting }) => {
-    console.log("Submitted Email:", values.email)
-    console.log("Submitted Password:", values.password)
+    submitLogin(values)
     setTimeout(() => setSubmitting(false), 3 * 1000)
   },
   validationSchema: LoginValidation,
-  initialValues: {email: 'fff', password: ''}
+  mapPropsToValues: () => ({ email: '', password: '' }),
 })(LoginWrapper)
