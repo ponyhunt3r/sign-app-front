@@ -6,12 +6,16 @@ const LoginForm = ( props: any)=> {
 
   const { values } = props;
 
-  return (<Form autoComplete="off">
+  return (<div className="login-form">
+  <Form autoComplete="off">
                 <Field type="text" name="email" placeholder="email" value={values.email}/>
-                <ErrorMessage name="email" />
+                <div className="validationErr"><ErrorMessage className="validationErr" name="email" /></div>
+                
                 <Field type="password" name="password" placeholder="hasło" />
-                <ErrorMessage name="password" />
-                <Button variant="contained" color="primary" type="submit">Zaloguj</Button> </Form>
+                <ErrorMessage className="validationErr" name="password" />
+                <Button variant="contained" color="primary" type="submit">Zaloguj</Button>
+        </Form>
+        </div>
   )
 
 }

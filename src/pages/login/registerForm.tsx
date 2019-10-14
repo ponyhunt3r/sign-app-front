@@ -5,14 +5,17 @@ import Button from '@material-ui/core/Button'
 
 export default class LoginForm extends PureComponent {
 render() {
-  return (<Form noValidate autoComplete="off">
+  return (<div className="login-form">
+  <Form noValidate autoComplete="off">
                 <Field type="text" name="email" placeholder="email" />
                 <ErrorMessage name="email" />
                 <Field type="password" name="password" placeholder="hasło" />
                 <ErrorMessage name="password" />
                 <Field type="password" name="confirmPassword" placeholder="potwiedź hasło" />
                 <ErrorMessage name="confirmPassword" />
-                <Button variant="contained" color="primary" type="submit">Załóż konto</Button> </Form>
+                <Button variant="contained" color="primary" type="submit">Załóż konto</Button> 
+                </Form>
+                </div>
   )
  }
 }

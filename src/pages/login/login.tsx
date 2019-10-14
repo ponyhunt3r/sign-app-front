@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    marginTop: '2rem'
   },
 }));
 
@@ -52,13 +53,12 @@ export default function SimpleTabs() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-      console.log('new numb', newValue)
     setValue(newValue);
   };
 
   return (
     <div className={classes.root}>
-        <Container maxWidth="sm">
+        <Container maxWidth="md" className="tab-container">
             <AppBar position="static">
                 <Tabs value={value}
                       onChange={handleChange}

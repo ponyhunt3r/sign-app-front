@@ -1,5 +1,32 @@
 input {
     padding: 5px;
-    border: 2px solid rgba(12, 12, 130, 0.1);
+    border: none;
+    border-bottom: 2px solid rgba(12, 12, 130, 0.1);
     display: block;
+    margin-bottom: 1rem;
+    width: 250px;
 }
+input:focus {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgba(102, 102, 150, 0.6);
+}
+.validationErr {
+    font-size: 14px;
+    color: red;
+    font-weight: 600;
+}
+.login-form {
+   display: flex;
+   justify-content: center; 
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width: 680px) {
+    .MuiContainer-maxWidthLg {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+  }
