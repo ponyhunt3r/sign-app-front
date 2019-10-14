@@ -42,7 +42,7 @@ const Routing = function () {
     };
 
     const listObjects = [
-        {text: 'O nas', link: '/'},
+        {text: 'O nas', link: '/about'},
         {text: 'Kursy', link: '/home'}
     ]
     const secondListObjects = [
@@ -60,8 +60,10 @@ const Routing = function () {
             <List>
                 {listObjects.map((obj, index) => (
                     <ListItem button key={obj.text}>
-                        <ListItemIcon>  <Link to={obj.link}><MailIcon /></Link></ListItemIcon>
-                        <ListItemText primary={obj.text} />
+                        <Link className={classes.list} to={obj.link}>
+                            <ListItemIcon>  <MailIcon /></ListItemIcon>
+                            <ListItemText primary={obj.text} />
+                        </Link>
                     </ListItem>
                 ))}
             </List>
@@ -69,8 +71,10 @@ const Routing = function () {
             <List>
                 {secondListObjects.map((obj, index) => (
                     <ListItem button key={obj.text}>
-                       <ListItemIcon>  <Link to={obj.link}><MailIcon /></Link></ListItemIcon>
-                        <ListItemText primary={obj.text} />
+                        <Link to={obj.link}>
+                            <ListItemIcon>  <MailIcon /></ListItemIcon>
+                            <ListItemText primary={obj.text} />
+                        </Link>
                     </ListItem>
                 ))}
             </List>
@@ -98,7 +102,7 @@ const Routing = function () {
                 <Switch>
                     <Route exact path="/" component={App} />
                     <Route path="/login" component={Login} />
-                    <Route path="/contact" component={Contact} />
+                    <Route path="/about" component={Contact} />
                     <Route component={Notfound} />
                 </Switch>
             </div>
