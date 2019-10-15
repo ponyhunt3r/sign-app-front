@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'mobx-react'; 
 import { Switch, Link, Route, BrowserRouter as Router } from 'react-router-dom'
 import Login from './pages/login/login'
 import Contact from './pages/contact/contact'
@@ -20,16 +21,20 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import List from '@material-ui/core/List';
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core/styles';
+import { NotificationBar } from './shared/components/notificationBar'
+import RootStore from './shared/stores/RootStore'
 
 const useStyles = makeStyles({
     list: {
-      width: 250,
+        width: 250,
     }
-  });
+});
 
 const Routing = function () {
 
     const classes = useStyles();
+
+    console.log('st st',RootStore)
 
     const [state, setState] = React.useState({
         left: false
@@ -42,12 +47,12 @@ const Routing = function () {
     };
 
     const listObjects = [
-        {text: 'O nas', link: '/about'},
-        {text: 'Kursy', link: '/home'}
+        { text: 'O nas', link: '/about' },
+        { text: 'Kursy', link: '/home' }
     ]
     const secondListObjects = [
-        {text: 'Mój Profil', link: '/profile'},
-        {text: 'Wyloguj', link: '/logout'}
+        { text: 'Mój Profil', link: '/profile' },
+        { text: 'Wyloguj', link: '/logout' }
     ]
 
     const sideList = () => (
@@ -82,31 +87,34 @@ const Routing = function () {
     );
 
     return (
-        <Router>
-            <div>
+        <Provider store={RootStore}>
+            <Router>
                 <div>
-                    <AppBar position="static">
-                        <Toolbar>
-                            <IconButton onClick={toggleDrawer(true)} edge="start" color="inherit" aria-label="menu">
-                                <MenuIcon />
-                            </IconButton>
-                            <Typography variant="h6">
-                                Page
+                    <div>
+                        <AppBar position="static">
+                            <Toolbar>
+                                <IconButton onClick={toggleDrawer(true)} edge="start" color="inherit" aria-label="menu">
+                                    <MenuIcon />
+                                </IconButton>
+                                <Typography variant="h6">
+                                    Page
                             </Typography>
-                        </Toolbar>
-                    </AppBar>
+                            </Toolbar>
+                        </AppBar>
+                    </div>
+                    <Drawer open={state.left} onClose={toggleDrawer(false)}>
+                        {sideList('right')}
+                    </Drawer>
+                    <Switch>
+                        <Route exact path="/" component={App} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/about" component={Contact} />
+                        <Route component={Notfound} />
+                    </Switch>
+                    <NotificationBar store={RootStore}/>
                 </div>
-                <Drawer open={state.left} onClose={toggleDrawer(false)}>
-                    {sideList('left')}
-                </Drawer>
-                <Switch>
-                    <Route exact path="/" component={App} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/about" component={Contact} />
-                    <Route component={Notfound} />
-                </Switch>
-            </div>
-        </Router>
+            </Router>
+        </Provider>
     )
 }
 

@@ -2,8 +2,10 @@ import { withFormik } from "formik"
 import * as yup from "yup"
 import LoginForm from "./loginForm"
 import Axios from 'axios';
+import RootStore from './../../shared/stores/RootStore'
 
 const LoginWrapper = LoginForm
+const { authStore, messageStore } = RootStore
 
 const LoginValidation = yup.object().shape({
   email: yup
@@ -16,10 +18,13 @@ const LoginValidation = yup.object().shape({
 })
 
 function submitLogin(values) {
+  console.log(RootStore)
     return Axios.post('http://localhost:3000/login', values)
     .then((res) => {
       if (res.status === 201) {
-        window.alert('u are logged in')
+        authStore.setLogged(true)
+        authStore.setToken(res.data.access_token);
+        messageStore.displayMessage("Login successfull")
       }
     });
 }
