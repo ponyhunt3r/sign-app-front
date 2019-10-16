@@ -2,9 +2,11 @@ import { withFormik } from "formik"
 import * as yup from "yup"
 import RegisterForm from "./registerForm"
 import Axios from 'axios';
+import RootStore from './../../shared/stores/RootStore'
 
 
 const RegisterWrapper = RegisterForm
+const { MessageStore } = RootStore
 
 const LoginValidation = yup.object().shape({
   email: yup
@@ -46,7 +48,7 @@ function submitLogin(values) {
     return Axios.post('http://localhost:3000/users', rest)
     .then((res) => {
         if (res.status === 201) {
-            window.alert('accountcreated')
+            MessageStore.displayMessage('Konto utworzone')
         }
     })
 }

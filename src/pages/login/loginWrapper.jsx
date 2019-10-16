@@ -18,15 +18,18 @@ const LoginValidation = yup.object().shape({
 })
 
 function submitLogin(values) {
-  console.log(RootStore)
     return Axios.post('http://localhost:3000/login', values)
     .then((res) => {
       if (res.status === 201) {
         authStore.setLogged(true)
         authStore.setToken(res.data.access_token);
-        messageStore.displayMessage("Login successfull")
+        messageStore.displayMessage("Zalogowano pomyślnie")
+        setAxiosHeader(authStore._token)
       }
     });
+}
+function setAxiosHeader(tkn) {
+    Axios.defaults.headers.common['Authorization'] = `Bearer ${tkn}`
 }
 
 export default withFormik({

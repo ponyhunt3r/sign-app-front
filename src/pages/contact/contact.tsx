@@ -1,7 +1,13 @@
 import React from 'react'
-class Contact extends React.Component {
-  render() {
-    return <h1>Contact</h1>
-  }
+import Button from '@material-ui/core/Button'
+import axios from 'axios';
+export default function ContainedButtons() {
+  return (
+   <Button onClick={handleClick} >blick me</Button>
+  )
 }
-export default Contact
+function handleClick(e: React.MouseEvent) {
+  axios.get('http://localhost:3000/api/me').then((res)=> {
+    console.log('r r r', res)
+  })
+} 
