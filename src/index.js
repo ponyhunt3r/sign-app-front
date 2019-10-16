@@ -24,6 +24,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { NotificationBar } from './shared/components/notificationBar'
 import RootStore from './shared/stores/RootStore'
 import Logout from './pages/logout/logout'
+import PrivateRoute from './shared/components/privateRoute'
 
 const useStyles = makeStyles({
     list: {
@@ -34,8 +35,6 @@ const useStyles = makeStyles({
 const Routing = function () {
 
     const classes = useStyles();
-
-    console.log('st st',RootStore)
 
     const [state, setState] = React.useState({
         left: false
@@ -110,7 +109,7 @@ const Routing = function () {
                         <Route exact path="/" component={App} />
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
-                        <Route path="/about" component={Contact} />
+                        <PrivateRoute path='/about' component={Logout} />
                         <Route component={Notfound} />
                     </Switch>
                     <NotificationBar store={RootStore}/>
