@@ -25,6 +25,7 @@ import { NotificationBar } from './shared/components/notificationBar'
 import RootStore from './shared/stores/RootStore'
 import Logout from './pages/logout/logout'
 import PrivateRoute from './shared/components/privateRoute'
+import Courses from './pages/courses/courses'
 
 const useStyles = makeStyles({
     list: {
@@ -48,10 +49,9 @@ const Routing = function () {
 
     const listObjects = [
         { text: 'O nas', link: '/about' },
-        { text: 'Kursy', link: '/home' }
+        { text: 'Kursy', link: '/classes' }
     ]
     const secondListObjects = [
-        { text: 'Mój Profil', link: '/profile' },
         { text: 'Wyloguj', link: '/logout' }
     ]
 
@@ -109,7 +109,7 @@ const Routing = function () {
                         <Route exact path="/" component={App} />
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
-                        <PrivateRoute path='/about' component={Logout} />
+                        <PrivateRoute path='/classes' component={Courses} />
                         <Route component={Notfound} />
                     </Switch>
                     <NotificationBar store={RootStore}/>
