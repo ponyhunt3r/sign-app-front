@@ -12,9 +12,11 @@ import AddIcon from '@material-ui/icons/Add';
 const useStyles = makeStyles({
   card: {
     minWidth: 275,
-    border: '2px solid lightsteelblue',
-    background: 'rgb(236, 236, 255)',
-    marginTop: '1rem'
+    border: '1px solid lightgrey',
+    background: 'rgb(246, 246, 255)',
+    marginTop: '1rem',
+    width: '45%',
+    margin: '0.7rem'
   },
   bullet: {
     display: 'inline-block',
@@ -28,7 +30,8 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
   wrapper: {
-    padding: '2rem'
+    padding: '2rem',
+    display: 'flex',
   },
   button: {
     backgroundColor: 'steelblue',
@@ -62,21 +65,24 @@ export default function Courses() {
       {courses.map((item) => (
         <Card className={classes.card}>
           <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              {item.description}
-            </Typography>
             <Typography variant="h5" component="h2">
               {item.name}
+            </Typography>
+            <Typography color="textSecondary" gutterBottom>
+              {item.description}
             </Typography>
             <Typography color="textSecondary">
               {item.members}
             </Typography>
             <Typography variant="body2" component="p">
-              {item.noOfMembers}
+              Maksymalnie uczestników: {item.maxMembers}
+            </Typography>
+            <Typography variant="body2" component="p">
+              Zapisanych uczestników: {item.noOfMembers}
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Learn More</Button>
+            <Button  variant="contained" color="primary" size="small">Zapisz</Button>
           </CardActions>
         </Card>
       ))}
