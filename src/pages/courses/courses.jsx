@@ -34,7 +34,7 @@ const useStyles = makeStyles({
     display: 'flex',
   },
   button: {
-    backgroundColor: 'steelblue',
+    backgroundColor: 'blue',
     position: 'fixed',
     right: '2rem',
     bottom: '30px',
